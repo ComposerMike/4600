@@ -2,6 +2,8 @@
 #include "h/init.h"
 #include "h/openclose.h"
 
+int isOpen = 0;
+
 int device_open(struct inode *inode, struct file *file)
 {
 	if(isOpen > 0)

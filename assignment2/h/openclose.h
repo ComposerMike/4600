@@ -5,5 +5,5 @@
 
 int device_open(struct inode *inode, struct file *file);
 int device_release(struct inode *inode, struct file *file);
-extern int isOpen = 0;
+extern int isOpen;
 #endif // OPENCLOSE_H
