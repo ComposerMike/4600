@@ -4,12 +4,24 @@
 
 int device_open(struct inode *inode, struct file *file)
 {
+	if(isOpen > 0)
+	{
+		printk(KERN_INFO "Device already Opened\n");
+		return 0;
+	}
+	isOpen++;
 	printk(KERN_INFO "Device Opened\n");
-	return 0;
+	return 1;
 }
 
 int device_release(struct inode *inode, struct file *file)
 {
-	printk(KERN_INFO "Device Released\n");
+	if(isOpen > 0)
+	{
+		isOpen--;
+		printk(KERN_INFO "Device Released\n");
+		return 1;
+	}
+	printk(KERN_INFO "Device already Released\n");
 	return 0;
 }
