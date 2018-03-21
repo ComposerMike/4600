@@ -15,10 +15,13 @@ struct file_operations fops = {
 
 int Major;
 
+/* Important for automatically creating device file
+// (which we aren't doing for this assignment)
 static struct device *dv;
 static struct class *cl;
 
 MODULE_LICENSE("GPL");
+//*/
 
 static int __init init(void)
 {
@@ -30,6 +33,7 @@ static int __init init(void)
 		return Major;
 	}
 
+	/* Device file creation is optional according to assignment
 	cl = class_create(THIS_MODULE, CLASS_NAME);
 	if(IS_ERR(cl))
 	{
@@ -45,15 +49,19 @@ static int __init init(void)
 		unregister_chrdev(Major, DEVICE_NAME);
 		printk(KERN_ERR "Failed to create device.\n");
 	}
+	//*/
 
+	printk(KERN_INFO "Using device major number %d.\n", Major);
 	return 0;
 }
 
 static void __exit deinit(void)
 {
+	/* Creating device file is optional according to assignment
 	device_destroy(cl, MKDEV(Major, 0));
 	class_unregister(cl);
 	class_destroy(cl);
+	//*/
 	// According to
 	// https://stackoverflow.com/questions/3237384
 	//     /how-to-find-if-unregister-chrdev-call-was-successful
