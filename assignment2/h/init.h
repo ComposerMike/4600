@@ -1,7 +1,9 @@
 #ifndef INIT_H
 #define INIT_H
 
-int init_module(void);
-void cleanup_module(void);
+#include <linux/init.h>
+
+static int __init init(void);
+static void __exit deinit(void);
 
 #endif // INIT_H

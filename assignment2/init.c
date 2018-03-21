@@ -1,16 +1,20 @@
-#include <linux/module.h>
+#include <linux/init.h>
 #include <linux/kernel.h>
+#include <linux/module.h>
 
 #include "h/init.h"
 
-int init_module()
+static int __init init()
 {
 	printk(KERN_INFO "Hello world 1.\n");
 
 	return 0;
 }
 
-void cleanup_module()
+static void __exit deinit()
 {
 	printk(KERN_INFO "Goodbye world 1.\n");
 }
+
+module_init(init);
+module_exit(deinit);
