@@ -1,11 +1,17 @@
 #include "h/readwrite.h"
 
-int read(char *dest)
+ssize_t device_read(struct file *filp,
+                    char *buffer,
+                    size_t length,
+                    loff_t *offset)
 {
 	return 0;
 }
 
-int write(char *source)
+ssize_t device_write(struct file *filp,
+                     const char *buffer,
+                     size_t length,
+                     loff_t *offset)
 {
 	return 0;
 }
