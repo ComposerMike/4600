@@ -12,14 +12,16 @@ struct file_operations fops = {
 	.release = device_release
 };
 
+int Major;
+
 int __init init()
 {
-	int res = register_chrdev(0, DEVICE_NAME, &fops);
+	int Major = register_chrdev(0, DEVICE_NAME, &fops);
 
-	if(res < 0) // Registering the device failed
+	if(Major < 0) // Registering the device failed
 	{
 		printk(KERN_ERR "Failed to register a device.\n");
-		return res;
+		return Major;
 	}
 
 	return 0;
@@ -27,7 +29,11 @@ int __init init()
 
 void __exit deinit()
 {
-	printk(KERN_INFO "Goodbye world!\n");
+	// According to
+	// https://stackoverflow.com/questions/3237384
+	//     /how-to-find-if-unregister-chrdev-call-was-successful
+	// unregister_chrdev is always expected to succeed, thus its void signature
+	unregister_chrdev(Major, DEVICE_NAME);
 }
 
 module_init(init);

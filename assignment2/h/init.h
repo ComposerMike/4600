@@ -11,6 +11,8 @@
 
 extern struct file_operations fops;
 
+extern int Major;
+
 int __init init(void);
 void __exit deinit(void);
 
