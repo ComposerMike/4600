@@ -3,6 +3,10 @@
 
 #include <linux/fs.h>
 
+#define BUFFER_SZ 1024
+
+extern char Devbuf[];
+
 ssize_t device_read(struct file *filp,
                     char *buffer,
                     size_t length,

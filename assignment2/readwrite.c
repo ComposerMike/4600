@@ -1,5 +1,7 @@
 #include "h/readwrite.h"
 
+char Devbuf[BUFFER_SZ];
+
 ssize_t device_read(struct file *filp,
                     char *buffer,
                     size_t length,
