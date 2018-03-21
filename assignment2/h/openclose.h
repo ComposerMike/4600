@@ -1,7 +1,7 @@
 #ifndef OPENCLOSE_H
 #define OPENCLOSE_H
 
-int open();
-int close();
+int open(void);
+int close(void);
 
 #endif // OPENCLOSE_H
