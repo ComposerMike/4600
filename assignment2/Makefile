@@ -1,5 +1,6 @@
 modname = chardevice
 files = init openclose readwrite
+
 $(modname)-y := $(addsuffix .o,$(files))
 obj-m += $(modname).o
 
