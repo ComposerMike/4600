@@ -5,6 +5,8 @@
 #include <linux/module.h>
 
 #include "h/init.h"
+#include "h/readwrite.h"
+#include "h/openclose.h"
 
 struct file_operations fops = {
 	.read = device_read,
